@@ -29,7 +29,7 @@ pnpm dev
 
 **Figure: Homepage UI**
 
-## Features 
+## Features
 
 - Visual editing via [`@tinacms/astro`](https://www.npmjs.com/package/@tinacms/astro) — a vanilla-JS bridge, with no React in the page tree
 - Tailwind CSS v4 block builder: Hero, CTA, Features, Stats, Testimonial, Callout, Content, Split, and Video
@@ -46,3 +46,31 @@ pnpm dev
 ## Want to learn more?
 
 Read the [TinaCMS documentation](https://tina.io/docs) and the [Astro documentation](https://docs.astro.build), or come and say hello in the [TinaCMS Discord server](https://discord.gg/cG2UNREu).
+
+
+import os
+
+readme_content = """# TinaCMS + Astro Clean Installation Guide (macOS Legacy Fix)
+
+Este repositorio contiene la plantilla oficial de **TinaCMS v4 + Astro** configurada para omitir los binarios nativos de `esbuild` (`@esbuild/darwin-x64`) que fallan en versiones antiguas de macOS (anteriores a macOS 12 Monterey, como Big Sur, Catalina, Mojave, etc.) debido al error de firma de seguridad:
+`dyld: Symbol not found: _SecTrustCopyCertificateChain`
+
+La solución implementada utiliza **npm overrides** para forzar el uso de la versión universal basada en **WebAssembly (esbuild-wasm)** en todo el árbol de dependencias (Astro, Vite, Tailwind v4, TinaCMS).
+
+---
+
+## 🚀 Requisitos Previos
+
+Asegúrate de tener instalada una versión de Node.js compatible con el proyecto (especificada en `engines`):
+- **Node.js**: `>=22.12.0` (Recomendado v22.16.0 o superior)
+- **NPM**: Incluido con Node.js
+
+---
+
+## 🛠️ Instrucciones para una Instalación Limpia desde GitHub
+
+Dado que los archivos de configuración (`package.json` con el `override` configurado) ya se encuentran en este repositorio, el proceso de instalación en una máquina nueva o tras clonar el proyecto es directo.
+
+Sigue estos pasos en tu terminal:
+
+### 1. Clonar el repositorio y acceder a él
